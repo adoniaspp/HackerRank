@@ -51,11 +51,31 @@ void vetores(){
     for(int i : temps){
         cout << i;
     }
-    sort(palavras);
+    sort(v.begin(),v.end());
+}
+
+vector<int> compareTriplets(vector<int> a, vector<int> b) {
+    vector<int> rating(2);
+    for(int i=0; i<a.size(); i++){
+        if(a[i]>b[i]){
+            rating[0] += 1;
+        }else if(a[i]<b[i]){
+            rating[1] += 1; 
+        }  
+    }
+    return rating;
+}
+
+long aVeryBigSum(vector<long> ar) {
+    long result = 0;
+    for(long el : ar){
+        result += el;
+    }
+    return result;
 }
 
 int main(){
-    cout << "Por favor entre com seu primeiro e segundo nome:\n";
+    /*cout << "Por favor entre com seu primeiro e segundo nome:\n";
     string nome;
     string sobrenome;
     double idade;
@@ -67,10 +87,19 @@ int main(){
     idade = sqrt(idade);
     cout << "Olá " + nome + ' ' + sobrenome + '\n';
     cout << "Sua idade é " << idade << '\n';
-    laco();
-    vetores();
+    laco();*/
+    //vetores();
+    vector<int> a = {5,6,7};
+    vector<int> b = {3,6,10};
+    vector<long> c = {1000000001, 1000000002, 1000000003, 1000000004, 1000000005};
+    vector<int> result  = compareTriplets(a, b);
+    for(int x : result){
+        cout << x << ' ';
+    }
+    cout << aVeryBigSum(c);
     return 0;
 }
+
 
 
 
