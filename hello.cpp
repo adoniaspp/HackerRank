@@ -74,6 +74,32 @@ long aVeryBigSum(vector<long> ar) {
     return result;
 }
 
+int simpleArraySum(vector<int> ar) {
+    int result = 0;
+    for(int num : ar){
+        result +=num;
+    }
+    return result;
+}
+
+int diagonalDifference(vector<vector<int>> arr) {
+    int somaDiagonalPrincipal = 0;
+    int somaDiagonalSecundaria = 0;
+    int diferencaDiagonal = 0;
+    for(int l=0; l<arr.size(); l++){
+        for(int c=0; c<arr.size(); c++){
+            if(l==c){
+                somaDiagonalPrincipal += arr[l][c];
+            }
+            if(l+c == arr.size()-1){
+                somaDiagonalSecundaria += arr[l][c];
+            }
+        }
+    }
+    diferencaDiagonal = abs(somaDiagonalPrincipal - somaDiagonalSecundaria);
+    return diferencaDiagonal;
+}
+
 int main(){
     /*cout << "Por favor entre com seu primeiro e segundo nome:\n";
     string nome;
@@ -89,14 +115,16 @@ int main(){
     cout << "Sua idade é " << idade << '\n';
     laco();*/
     //vetores();
-    vector<int> a = {5,6,7};
+    /*vector<int> a = {5,6,7};
     vector<int> b = {3,6,10};
     vector<long> c = {1000000001, 1000000002, 1000000003, 1000000004, 1000000005};
     vector<int> result  = compareTriplets(a, b);
     for(int x : result){
         cout << x << ' ';
     }
-    cout << aVeryBigSum(c);
+    cout << aVeryBigSum(c);*/
+    vector<vector<int>> arr = {{11,2,4},{4,5,6},{10,8,-12}};
+    cout << diagonalDifference(arr) << '\n';
     return 0;
 }
 
