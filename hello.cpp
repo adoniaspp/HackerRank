@@ -159,14 +159,78 @@ void staircase(int n)
     {
         for (int j = n; j > 0; j--)
         {
-            if(j>i){
+            if (j > i)
+            {
                 cout << ' ';
-            }else{
+            }
+            else
+            {
                 cout << '#';
             }
         }
         cout << '\n';
     }
+}
+
+int sockMerchant(int n, vector<int> ar)
+{
+    vector<int> socksPair;
+    int pairs = 0;
+    bool checkPair;
+
+    for (int sock : ar)
+    {
+        checkPair = false;
+        if (socksPair.empty())
+        {
+            socksPair.push_back(sock);
+        }
+        else
+        {
+            for (int i = 0; i < socksPair.size(); i++)
+            {
+                if (sock == socksPair[i])
+                {
+                    socksPair.erase(socksPair.begin() + i);
+                    pairs += 1;
+                    checkPair = true;
+                    break;
+                }
+            }
+            if (!checkPair)
+            {
+                socksPair.push_back(sock);
+            }
+        }
+    }
+    return pairs;
+}
+
+int countingValleys(int n, string s)
+{
+
+    int seaLevel = 0;
+    int countValley = 0;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        switch (s[i])
+        {
+        case 'U':
+            seaLevel++;
+            break;
+        case 'D':
+            if (seaLevel == 0)
+            {
+                countValley += 1;
+            }
+            seaLevel--;
+            break;
+        default:
+            break;
+        }
+    }
+    return countValley;
 }
 
 int main()
@@ -197,6 +261,8 @@ int main()
     cout << diagonalDifference(arr) << '\n';
     vector<int> arr = {-4, 3, -9, 0, 4, 1};
     plusMinus(arr);*/
-    staircase(6);
+    //staircase(6);
+    //cout << sockMerchant(9, {10, 20, 20, 10, 10, 30, 50, 10, 20});
+    cout << countingValleys(8, "UDDDUDUU");
     return 0;
 }
