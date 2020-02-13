@@ -233,6 +233,32 @@ int countingValleys(int n, string s)
     return countValley;
 }
 
+int jumpingOnClouds(vector<int> c)
+{
+    int i = 0;
+    int saltos = 0;
+    bool saltou = false;
+    while (i < (c.size()-1))
+    {
+        saltou = false;
+        if (!(i + 2 >= c.size()))
+        {
+            if (c[i + 2] == 0)
+            {
+                i += 2;
+                saltos += 1;
+                saltou = true;
+            }
+        }
+        if (!(i + 1 >= c.size()) && !saltou)
+        {
+            i += 1;
+            saltos += 1;
+        }
+    }
+    return saltos;
+}
+
 int main()
 {
     /*cout << "Por favor entre com seu primeiro e segundo nome:\n";
@@ -263,6 +289,7 @@ int main()
     plusMinus(arr);*/
     //staircase(6);
     //cout << sockMerchant(9, {10, 20, 20, 10, 10, 30, 50, 10, 20});
-    cout << countingValleys(8, "UDDDUDUU");
+    //cout << countingValleys(8, "UDDDUDUU");
+    cout << jumpingOnClouds({0, 0, 0, 0, 1, 0});
     return 0;
 }
