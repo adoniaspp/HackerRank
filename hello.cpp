@@ -238,6 +238,7 @@ int jumpingOnClouds(vector<int> c)
     int i = 0;
     int saltos = 0;
     bool saltou = false;
+
     while (i < (c.size()-1))
     {
         saltou = false;
@@ -257,6 +258,25 @@ int jumpingOnClouds(vector<int> c)
         }
     }
     return saltos;
+}
+
+int repeatedString(string s, long n)
+{
+    string r;
+    int j = 0;
+    int count = 0;
+    int sizeS = s.length()-1;
+    for(int i=0; i<n; i++)
+    {  
+        if(j == sizeS){
+            j = 0;
+        }
+        if(s[j] == 'a'){
+            count++;
+        }
+        j++;
+    }
+    return count;
 }
 
 int main()
@@ -290,6 +310,7 @@ int main()
     //staircase(6);
     //cout << sockMerchant(9, {10, 20, 20, 10, 10, 30, 50, 10, 20});
     //cout << countingValleys(8, "UDDDUDUU");
-    cout << jumpingOnClouds({0, 0, 0, 0, 1, 0});
+    //cout << jumpingOnClouds({0, 0, 0, 0, 1, 0});
+    cout << repeatedString("aba", 10);
     return 0;
 }
